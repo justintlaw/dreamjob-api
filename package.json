@@ -1,0 +1,22 @@
+{
+  "name": "dreamjob-api",
+  "version": "1.0.0",
+  "description": "Backend for retrieving data for the dreamjob webapp",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve:offline": "npx serverless offline --noAuth --noEnvironment"
+  },
+  "author": "Justin Lawrence",
+  "license": "ISC",
+  "dependencies": {
+    "aws-serverless-express": "^3.4.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "knex": "^0.95.6",
+    "mysql": "^2.18.1",
+    "serverless": "^2.43.1",
+    "serverless-offline": "^7.0.0"
+  }
+}
