@@ -22,3 +22,5 @@ router.get('/:id',
   asyncHandler(getJob),
   (req, res) => res.json(req.responseData)
 )
+
+module.exports = router

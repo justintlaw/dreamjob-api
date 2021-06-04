@@ -1,15 +1,23 @@
 'use strict'
 
+const { db } = require('./db')
+
 const getAllSkills = async () => {
+  const skills = await db.SkillModel
+    .query()
+
   return {
-    skill1: 'skilllls',
-    skill2: 'another skill'
+    skills
   }
 }
 
 const getSkill = async (skillId) => {
+  const skill = await db.SkillModel
+    .query()
+    .findById(skillId)
+
   return {
-    skill: `skill_${skillId}`
+    skill
   }
 }
 

@@ -3,13 +3,15 @@
 const dataSources = require('../datasources')
 
 async function getAllSkills (req, res, next) {
-  req.responseData = await dataSources.job.getAllSkills()
+  req.responseData = await dataSources.skills.getAllSkills()
 
   return void next()
 }
 
 async function getSkill (req, res, next) {
-  req.responseData = await dataSources.job.getSkill()
+  const { params } = req
+
+  req.responseData = await dataSources.skills.getSkill(params.id)
 
   return void next()
 }
