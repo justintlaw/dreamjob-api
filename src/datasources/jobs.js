@@ -1,15 +1,23 @@
 'use strict'
 
+const { db } = require('./db')
+
 const getAllJobs = async () => {
+  const jobs = await db.JobModel
+    .query()
+
   return {
-    user: 'test_job_1',
-    user2: 'tesst_job_2'
+    jobs
   }
 }
 
 const getJob = async (id) => {
+  const job = await db.JobModel
+    .query()
+    .findById(id)
+
   return {
-    user: `test_job_${id}`
+    job: job
   }
 }
 

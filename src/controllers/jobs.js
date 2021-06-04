@@ -3,13 +3,15 @@
 const dataSources = require('../datasources')
 
 async function getAllJobs (req, res, next) {
-  req.responseData = await dataSources.job.getAllJobs()
+  req.responseData = await dataSources.jobs.getAllJobs()
 
   return void next()
 }
 
 async function getJob (req, res, next) {
-  req.responseData = await dataSources.job.getJob()
+  const { params } = req
+
+  req.responseData = await dataSources.jobs.getJob(params.id)
 
   return void next()
 }

@@ -9,7 +9,9 @@ async function getAllUsers (req, res, next) {
 }
 
 async function getUser (req, res, next) {
-  req.responseData = await dataSources.user.getUser(3)
+  const { params } = req
+
+  req.responseData = await dataSources.user.getUser(params.id)
 
   return void next()
 }
