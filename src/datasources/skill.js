@@ -1,9 +1,9 @@
 'use strict'
 
-const { db } = require('./db')
+const { SkillModel } = require('./db')
 
 const getAllSkills = async () => {
-  const skills = await db.SkillModel
+  const skills = await SkillModel
     .query()
 
   return {
@@ -12,16 +12,48 @@ const getAllSkills = async () => {
 }
 
 const getSkill = async (skillId) => {
-  const skill = await db.SkillModel
+  const skill = await SkillModel
     .query()
     .findById(skillId)
 
   return {
-    skill
+    ...skill
   }
+}
+
+const createSkill = async (newSkill) => {
+  const skill = await SkillModel
+    .query()
+    .insert(newSkill)
+
+  return {
+    ...skill
+  }
+}
+
+const updateSkill = async (id, newSkill) => {
+  const skill = await SkillModel
+    .query()
+    .findById(id)
+    .patch(newSkill)
+
+  return {
+    ...skill
+  }
+}
+
+const deleteSkill = async (id) => {
+  await SkillModel
+    .query()
+    .deleteById(id)
+
+  return {}
 }
 
 module.exports = {
   getAllSkills,
-  getSkill
+  getSkill,
+  createSkill,
+  updateSkill,
+  deleteSkill
 }

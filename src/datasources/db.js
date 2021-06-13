@@ -2,6 +2,4 @@
 
 const { database } = require('../../../dreamjob-db')
 
-module.exports = {
-  db: database
-}
+module.exports = database

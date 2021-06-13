@@ -1,9 +1,9 @@
 'use strict'
 
-const { db } = require('./db')
+const { UserModel } = require('./db')
 
 const getAllUsers = async () => {
-  const users = await db.UserModel
+  const users = await UserModel
     .query()
 
   return {
@@ -12,7 +12,7 @@ const getAllUsers = async () => {
 }
 
 const getUser = async (id) => {
-  const user = await db.UserModel
+  const user = await UserModel
     .query()
     .findById(id)
 
