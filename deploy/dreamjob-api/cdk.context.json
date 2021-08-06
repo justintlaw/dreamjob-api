@@ -1,0 +1,45 @@
+{
+  "vpc-provider:account=163961535528:filter.tag:Name=CdkStackStack/VPC:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-06afcedcaf241d272",
+    "vpcCidrBlock": "10.0.0.0/16",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0e1254fd6038c8438",
+            "cidr": "10.0.0.0/18",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0ae22147b3c6051f1"
+          },
+          {
+            "subnetId": "subnet-0fe7f465960b0504b",
+            "cidr": "10.0.64.0/18",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-08fdddfa02db4453f"
+          }
+        ]
+      },
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-0cbd760fe36bb4972",
+            "cidr": "10.0.128.0/18",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-051f13e897eea8721"
+          },
+          {
+            "subnetId": "subnet-09b53952a0c528065",
+            "cidr": "10.0.192.0/18",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-01406daa8f7db3487"
+          }
+        ]
+      }
+    ]
+  }
+}

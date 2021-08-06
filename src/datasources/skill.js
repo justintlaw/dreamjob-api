@@ -31,6 +31,10 @@ const createSkill = async (newSkill) => {
   }
 }
 
+/*
+  Should only be available to the admin so that a user doesn't update
+  a skill being used by another user
+*/
 const updateSkill = async (id, newSkill) => {
   const skill = await SkillModel
     .query()
@@ -42,6 +46,8 @@ const updateSkill = async (id, newSkill) => {
   }
 }
 
+// TODO restrict this to admin
+// Ideally, unused skills would be deleted after 30 days, etc.
 const deleteSkill = async (id) => {
   await SkillModel
     .query()
