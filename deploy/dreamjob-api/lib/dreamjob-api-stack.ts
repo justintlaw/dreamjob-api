@@ -54,7 +54,6 @@ export class DreamjobApiStack extends cdk.Stack {
     // declare the task definiton/alb for fargate
     const service = new ecs_patterns.ApplicationLoadBalancedFargateService(this, 'RestApiFargate', {
       cluster: cluster,
-      
       cpu: 256,
       desiredCount: 1,
       taskImageOptions: {
