@@ -84,10 +84,6 @@ const getJob = async (user, id) => {
 
   // return nothing if it's not one of the user's jobs
   return user.sub === job.userId ? { ...job } : null
-
-  // return {
-  //   ...job
-  // }
 }
 
 const updateJob = async (user, id, newJob) => {
@@ -121,7 +117,7 @@ const updateJob = async (user, id, newJob) => {
   console.log('remove ids', skillIdsToRemove)
 
   if (skillIdsToRemove) {
-    const removeSkills = await job
+    await job
     .$relatedQuery('skills')
     .unrelate()
     .whereIn('id', skillIdsToRemove)
@@ -136,20 +132,17 @@ const updateJob = async (user, id, newJob) => {
     const existingSkill = await SkillModel.query().findOne({
       name: skill.name
     })
-    // console.log('skills', skillQuery)
 
     if (existingSkill) {
       await query.$relatedQuery('skills').relate(existingSkill)
     } else {
       await query.$relatedQuery('skills').insert(skill)
     }
-
-    // console.log('relate result', result)
   }
 
 
   // update the job 
-  const updatedJob = await JobModel
+  await JobModel
     .query()
     .findById(id)
     .patch(newJob)
@@ -212,11 +205,6 @@ const createJob = async (user, newJob) => {
     .query()
     .insertGraph(newJob)
 
-  console.log('job', job)
-
-  // relate any existing skills
-  console.log('job id', job.id)
-
   for (let jobId of existingsSkillIds) {
     await JobModel
       .relatedQuery('skills')
@@ -224,17 +212,6 @@ const createJob = async (user, newJob) => {
       .relate(jobId)
       .debug()
   }
-
-  // no need to use objection ro relate because its done manually
-  // relate the job to the user id
-  // const userData = await UserModel
-  //   .query()
-  //   .findById(user.sub)
-
-  // await JobModel
-  //   .relatedQuery('user')
-  //   .for(job.id)
-  //   .relate(userData)
 
   const finalJob = await JobModel
     .query()

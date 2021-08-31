@@ -93,7 +93,7 @@ app.use((req, res, next) => {
         id: response.sub,
         name: response.name,
         email: response.email
-      }).then(value => {
+      }).then(() => {
         next()
       })
     } catch (err) {

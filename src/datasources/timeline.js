@@ -1,15 +1,7 @@
 'use strict'
 
 const _ = require('lodash')
-
-// update this require
 const { TimelineModel, JobModel, SkillModel } = require('./db')
-
-// const getTimelinesByUser = async (userId) => {
-//   const timelines = await TimelineModel
-//     .query()
-// }
-
 
 const getAllTimelines = async (user) => {
   const timelines = await TimelineModel
@@ -20,20 +12,6 @@ const getAllTimelines = async (user) => {
     .modifyGraph('jobs', builder => {
       builder.orderBy('startDate')
     })
-
-  /*
-    We are converting the dates to the format the front end needs (YYYY-MM-DD)
-    This should be changed to be handled at either the database level or front end getall functin
-    This is a temporary solution here
-  */
-  // for (let timeline of timelines) {
-  //   for (let job of timeline.jobs) {
-  //     // console.log(job)
-  //     job.startDate = job.startDate.toString().split('T')[0]
-  //     job.endDate = job.endDate.toString().split('T')[0]
-  //     console.log(job)
-  //   }
-  // }
 
   return {
     timelines
@@ -282,56 +260,6 @@ const removeJobFromTimeline = async (user, id, jobId) => {
   return {
     removeJob
   }
-  // const lastPosition = (await TimelineModel
-  //   .query()
-  //   .findById(id)
-  //   .withGraphJoined('jobs')
-  //   .max('position', { as: 'lastPosition' })).lastPosition
-
-  // const timeline = await TimelineModel
-  //   .query()
-  //   .findById(id)
-
-  // const jobToRemove = await timeline
-  //   .$relatedQuery('jobs')
-  //   .findOne('jobId', jobId)
-
-  // console.log(jobToRemove)
-
-  // // check if job is the last row
-  // if (jobToRemove.position === lastPosition) {
-  //   console.log('last position')
-  //   const removeJob = await TimelineModel
-  //     .query()
-  //     .unrelate(jobToRemove)
-
-  //   return {
-  //     removeJob
-  //   }
-  // }
-
-  // await TimelineModel
-  //   .relatedQuery('jobs')
-  //   .unrelate()
-  //   .where('jobId', jobToRemove.id)
-
-  // // decrement all rows positions after the removed job
-  // for (let index = lastPosition; index > jobToRemove.position; index--) {
-  //   const timeline = await TimelineModel
-  //     .query()
-  //     .findById(id)
-    
-  //   const jobToUpdate = await timeline
-  //     .$relatedQuery('jobs')
-  //     .findOne({
-  //       position: index
-  //     })
-  //     .patch({
-  //       position: index - 1
-  //     })
-  // }
-
-  // return {}
 }
 
 module.exports = {
