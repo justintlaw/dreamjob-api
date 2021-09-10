@@ -44,7 +44,6 @@ const getAllJobs = async (user, filter = {}) => {
 
     // filter skills
     if (filter.skills) {
-      // You thought you wouldn't be doing subqueries tonight didn't you?
       query.whereIn(
         'job.id',
         JobModel.query()
