@@ -22,9 +22,10 @@ async function getTimeline (req, res, next) {
 
 async function updateTimeline (req, res, next) {
   const { params, user, body } = req
+  console.log('params', params)
 
   req.responseData = await dataSources.timeline.updateTimeline(user, params.id, body.newName)
-
+  console.log(req.responseData)
   return void next()
 }
 

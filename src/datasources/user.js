@@ -118,11 +118,9 @@ const removeSkillFromUser = async (id, cognitoId, skill) => {
 // creates a user given a sub (from cognito)
 // TODO: update this
 const createUser = async (userData) => {
-  console.log('creating user')
   const currentUser = await UserModel
     .query()
     .findById(userData.id)
-  console.log('current', currentUser)
 
   if (currentUser) {
     return { ...currentUser }

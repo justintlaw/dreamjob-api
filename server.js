@@ -68,7 +68,6 @@ app.use((req, res, next) => {
   }
 
   // for offline use only
-  console.log('getting user', accessTokenFromClient)
   if (accessTokenFromClient.startsWith('Bearer')) {
     accessTokenFromClient = accessTokenFromClient.split(' ')[1]
   }
@@ -88,7 +87,6 @@ app.use((req, res, next) => {
      */
     // probably, .catch() should be used instead of "try...catch"
     try {
-      console.log('try', response)
       dataSources.user.createUser({
         id: response.sub,
         name: response.name,

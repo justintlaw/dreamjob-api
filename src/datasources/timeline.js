@@ -38,6 +38,7 @@ const getTimeline = async (user, id) => {
 }
 
 const updateTimeline = async (user, id, newName) => {
+  console.log('user', user, 'id', id)
   const timeline = await TimelineModel
     .query()
     .patchAndFetchById(id, { name: newName })
@@ -47,6 +48,8 @@ const updateTimeline = async (user, id, newName) => {
     })
     .where('userId', user.sub)
     .debug()
+
+  console.log('timeline', timeline)
 
   return {
     ...timeline
