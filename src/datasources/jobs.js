@@ -21,6 +21,12 @@ const getAllJobs = async (user, filter = {}) => {
     // use with graph joined so we can filter on relations too
     const query = JobModel.query().withGraphJoined('skills').where('job.userId', user.sub)
 
+    console.log('TITLE', filter.jobTitle)
+    // filter title
+    if (filter.jobTitle) {
+      query.where('title', 'like', `%${filter.jobTitle}%`)
+    }
+
     // filter location
     if (filter.location) {
       query.whereIn('location', filter.location)
