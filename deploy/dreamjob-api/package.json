@@ -9,7 +9,8 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "context:clear": "cdk context --clear"
+    "context:clear": "cdk context --clear",
+    "deploy": "npm run context:clear && cdk deploy"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.108.1",
